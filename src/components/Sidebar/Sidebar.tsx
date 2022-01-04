@@ -6,11 +6,13 @@ import {
   RssIcon,
   HeartIcon
 } from '@heroicons/react/outline'
-import { signOut } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 
 import styles from './Sidebar.module.scss'
 
 function Sidebar() {
+  const { data, status } = useSession()
+  console.log(data);
   
   return (
     <div className={styles.container}>
