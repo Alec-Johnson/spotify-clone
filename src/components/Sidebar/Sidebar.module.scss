@@ -5,6 +5,16 @@
   font-size: 14px;
   line-height: 1.25rem;
   border-right: #292929 solid 1px;
+  overflow-y: scroll;
+  height: 100vh;
+  // Hide scrollbar
+  -ms-overflow-style: none;
+  /* Firefox */
+  scrollbar-width: none;
+  /* Safari and Chrome */
+  &::-webkit-scrollbar {
+        display: none
+  }
 
   .btnGroup {
     margin-left: 10px;

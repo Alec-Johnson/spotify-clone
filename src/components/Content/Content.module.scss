@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  flex-grow: 1;
+  color: white;
+
+  header {
+    div {
+      display: flex;
+      align-items: center;
+      background-color: black;
+      opacity: 0.9;
+      margin-left: 12px;
+      margin-right: 12px;
+      cursor: pointer;
+      border-radius: 20px;
+      padding: 4px;
+      padding-right: 8px;
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      .profileImg {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        
+      }
+      h2 {
+        margin-left: 12px;
+        font-size: 1.2em;
+        font-weight: bold;
+      }
+      svg {
+        height: 20px;
+        width: 20px;
+      }
+    }
+  }
+}
