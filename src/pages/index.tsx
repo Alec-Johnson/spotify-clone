@@ -1,9 +1,11 @@
 import Sidebar from '@components/Sidebar/Sidebar'
+import Content from '@components/Content/Content'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 
 const Home: NextPage = () => {
+  
   return (
     <div className={styles.home}>
       <Head>
@@ -12,10 +14,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main >
-        {/* Sidebar */}
+      <main className={styles.main}>
         <Sidebar />
-        {/* Content */}
+        <Content />
       </main>
 
       <div>
