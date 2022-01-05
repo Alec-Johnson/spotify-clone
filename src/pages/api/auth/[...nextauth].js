@@ -17,7 +17,7 @@ const refreshAccessToken = async (token) => {
 			refreshToken: refreshedToken.refresh_token ?? token.refreshToken, // Replace with new refresh token, else use old one
 		}
 	} catch (error) {
-		console.log(error);
+		console.log('Error:', error);
 		return {
 			...token,
 			error: "refreshAccessToken error:"

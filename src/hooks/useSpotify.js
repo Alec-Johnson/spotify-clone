@@ -13,11 +13,11 @@ function useSpotify() {
 	useEffect(() => {
 		if (data) {
 			// Push to login if refresh access token attempt error
-			if ((data.error = "RefreshAccessTokenError")) {
+			if (data.error === "RefreshAccessTokenError") {
 				signIn();
 			}
 
-			spotifyApi.setAccessToken(data?.user?.accessToken);
+			spotifyApi.setAccessToken(data.user.accessToken);
 		}
 	}, [data]);
 

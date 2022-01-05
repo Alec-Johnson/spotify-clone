@@ -7,12 +7,23 @@ import {
   HeartIcon
 } from '@heroicons/react/outline'
 import { signOut, useSession } from 'next-auth/react'
+import { useEffect, useState } from 'react'
+import useSpotify from '../../hooks/useSpotify'
 
 import styles from './Sidebar.module.scss'
 
 function Sidebar() {
+  const spotifyApi = useSpotify()
   const { data, status } = useSession()
-  console.log(data);
+  const [playlists, setPlaylists] = useState<SpotifyApi.PlaylistObjectSimplified[] | null>([])
+
+  useEffect(() => {
+    if (spotifyApi.getAccessToken()) {
+      spotifyApi.getUserPlaylists().then((playlists) => {
+        setPlaylists(playlists.body.items)
+      })
+    }
+  }, [data, spotifyApi])
   
   return (
     <div className={styles.container}>
@@ -47,7 +58,10 @@ function Sidebar() {
         <hr />
 
         {/* Playlists... */}
-        <p className={styles.playlistName}>Playlist Name...</p>
+        {playlists?.map((playlist) => (
+          <p className={styles.playlistName} key={playlist.id}>{playlist.name}</p>
+        ))}
+        
       </div>
     </div>
   )
