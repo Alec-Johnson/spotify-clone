@@ -1,20 +1,22 @@
 .container {
-  display: flex;
   flex-grow: 1;
-  color: white;
 
   header {
+    // Place in top right corner
+    position: absolute;
+    top: 1.25rem;
+    right: 2rem;
+
     div {
       display: flex;
       align-items: center;
       background-color: black;
       opacity: 0.9;
-      margin-left: 12px;
-      margin-right: 12px;
       cursor: pointer;
-      border-radius: 20px;
+      border-radius: 9999px;
       padding: 4px;
       padding-right: 8px;
+      color: white;
 
       &:hover {
         opacity: 0.8;
@@ -24,17 +26,76 @@
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        
       }
       h2 {
         margin-left: 12px;
-        font-size: 1.2em;
-        font-weight: bold;
+        margin-right: 12px;
+        font-size: 1rem;
+        font-weight: 400;
       }
       svg {
         height: 20px;
         width: 20px;
+        
       }
     }
+  }
+
+  section {
+    display: flex;
+    align-items: flex-end;
+    background: linear-gradient(to bottom, #99505c, black);
+    height: 16rem;
+    color: white;
+    padding: 32px;
+
+    img {
+      height: 11rem;
+      width: 11rem;
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    }
+
+    .playlistTextContainer {
+      margin-left: 0.5rem;
+      p {
+        margin-bottom: 0.5rem;
+      }
+      .playlistName {
+        font-size: 1.5rem;
+        line-height: 2rem;
+        font-weight: bold;
+        margin: 0;
+
+        @media (min-width: 768px) {
+          font-size: 1.875rem;
+          line-height: 2.25rem;
+        }
+
+        @media (min-width: 1280px) {
+          font-size: 2.5rem;
+          line-height: 3rem;
+        }
+      }
+    }
+
+    // // Change background dynamically, styles not working
+    // &.blue {
+    //   background: linear-gradient(to bottom, #2965b4, black)!important;
+    // }
+    // &.green {
+    //   background: linear-gradient(to bottom, #3f9655, black);
+    // }
+    // &.red{
+    //   background: linear-gradient(to bottom, #9e4242, black);
+    // }
+    // &.orange{
+    //   background: linear-gradient(to bottom, #e49928, black);
+    // }
+    // &.purple{
+    //   background: linear-gradient(to bottom, #7f4385, black);
+    // }
+    // &.yellow{
+    //   background: linear-gradient(to bottom, #c6d638, black);
+    // }
   }
 }

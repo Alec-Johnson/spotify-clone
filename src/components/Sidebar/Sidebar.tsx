@@ -8,6 +8,8 @@ import {
 } from '@heroicons/react/outline'
 import { signOut, useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
+import { useRecoilState } from 'recoil'
+import { playlistIDState } from 'src/atoms/playlistAtom'
 import useSpotify from '../../hooks/useSpotify'
 
 import styles from './Sidebar.module.scss'
@@ -16,6 +18,8 @@ function Sidebar() {
   const spotifyApi = useSpotify()
   const { data, status } = useSession()
   const [playlists, setPlaylists] = useState<SpotifyApi.PlaylistObjectSimplified[] | null>([])
+  // Set selected playlistId globally so that it can be used in other components
+  const [playlistId, setPlaylistId] = useRecoilState(playlistIDState)
 
   useEffect(() => {
     if (spotifyApi.getAccessToken()) {
@@ -59,7 +63,9 @@ function Sidebar() {
 
         {/* Playlists... */}
         {playlists?.map((playlist) => (
-          <p className={styles.playlistName} key={playlist.id}>{playlist.name}</p>
+          <p onClick={() => setPlaylistId(playlist.id)} className={styles.playlistName} key={playlist.id}>
+            {playlist.name}
+          </p>
         ))}
         
       </div>
