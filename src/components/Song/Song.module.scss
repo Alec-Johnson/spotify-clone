@@ -1,0 +1,68 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  color: rgb(107 114 128);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 2rem;
+  padding-right: 1.25rem;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #282828;
+  }
+
+  .songInfo {
+    display: flex;
+    align-items: center;
+    
+    > * + *	{
+      margin-left: 1rem;
+    }
+
+    img {
+      height: 2.5rem;
+      width: 2.5rem;
+    }
+
+    div {
+      p {
+        width: 10rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: wrap;
+      }
+      .trackName {
+        width: 9rem;
+        color: whitesmoke;
+        // Truncate text
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        @media screen and (min-width: 1280px) {
+          width: 16rem;
+        }
+      }
+    }
+  }
+  .albumInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: auto;
+
+    @media screen and (min-width: 768px) {
+      margin-left: 1rem; // Allows albumInfo and songInfo text to never overlap
+    }
+    .albumName {
+      display: none;
+      width: 10rem;
+
+      @media screen and (min-width: 768px) {
+        display: inline-block;
+      }
+    }
+  }  
+}
