@@ -1,8 +1,9 @@
 import Sidebar from '@components/Sidebar/Sidebar'
 import Content from '@components/Content/Content'
-import type { NextPage } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
+import { getSession } from 'next-auth/react'
 
 const Home: NextPage = () => {
   
@@ -27,3 +28,14 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+// Server side render the user's session so we have the accessToken before it hits the client,
+// required to fix issue on not having user's accessToken on initial render
+export const getServerSideProps: GetServerSideProps = async(context) => {
+  const session = await getSession(context)
+  return {
+    props: {
+      session
+    },
+  }
+}
