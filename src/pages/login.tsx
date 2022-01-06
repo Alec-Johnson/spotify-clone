@@ -1,6 +1,7 @@
 import { GetServerSideProps } from 'next';
 import { getProviders, signIn} from 'next-auth/react'
 import Image from 'next/image';
+import SpotifyLogo from 'public/spotify-logo.png';
 import styles from '../styles/Login.module.scss'
 
 type SpotifyProviderProps = {
@@ -20,7 +21,7 @@ function Login({ providers }: SpotifyProviderProps) {
   
   return (
     <div className={styles.container}>
-      <Image src='/spotify-logo.png' width={300} height={300} alt='Spotify logo' />
+      <Image src={SpotifyLogo} width={300} height={300} alt='Spotify logo' />
       {/* Object.values() returns an array of the values of the object, .entries() returns an array of the key-value pairs of the object */}
       {Object.values(providers).map((spotify) => ( 
         <div key={spotify.name}>
