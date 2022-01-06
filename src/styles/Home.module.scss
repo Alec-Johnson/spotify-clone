@@ -6,4 +6,10 @@
   .main {
     display: flex;
   }
+
+  .playerWrapper {
+    position: sticky;
+    bottom: 0;
+  }
+  
 }
