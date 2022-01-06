@@ -20,11 +20,10 @@ const refreshAccessToken = async (token) => {
 		console.log('Error:', error);
 		return {
 			...token,
-			error: "refreshAccessToken error:"
+			error: "refreshAccessTokenError"
 		};
 	}
 }
-
 // NextAuth has built in support with their own spotify provider 
 // More info here: https://next-auth.js.org/providers/spotify
 export default NextAuth({
