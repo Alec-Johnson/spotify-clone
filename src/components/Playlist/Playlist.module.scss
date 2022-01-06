@@ -1,5 +1,15 @@
 .container {
   flex-grow: 1;
+  height: 100vh;
+  overflow-y: scroll;
+  // Hide scrollbar
+  -ms-overflow-style: none;
+  /* Firefox */
+  scrollbar-width: none;
+  /* Safari and Chrome */
+  &::-webkit-scrollbar {
+    display: none
+  }
 
   header {
     // Place in top right corner
@@ -10,7 +20,7 @@
     div {
       display: flex;
       align-items: center;
-      background-color: black;
+      background-color: #121212;
       opacity: 0.9;
       cursor: pointer;
       border-radius: 9999px;
@@ -44,7 +54,7 @@
   section {
     display: flex;
     align-items: flex-end;
-    background: linear-gradient(to bottom, #99505c, black);
+    background: linear-gradient(to bottom, #99505c, #121212);
     height: 16rem;
     color: white;
     padding: 32px;
@@ -66,36 +76,16 @@
         font-weight: bold;
         margin: 0;
 
-        @media (min-width: 768px) {
+        @media screen and (min-width: 768px) {
           font-size: 1.875rem;
           line-height: 2.25rem;
         }
 
-        @media (min-width: 1280px) {
+        @media screen and (min-width: 1280px) {
           font-size: 2.5rem;
           line-height: 3rem;
         }
       }
     }
-
-    // // Change background dynamically, styles not working
-    // &.blue {
-    //   background: linear-gradient(to bottom, #2965b4, black)!important;
-    // }
-    // &.green {
-    //   background: linear-gradient(to bottom, #3f9655, black);
-    // }
-    // &.red{
-    //   background: linear-gradient(to bottom, #9e4242, black);
-    // }
-    // &.orange{
-    //   background: linear-gradient(to bottom, #e49928, black);
-    // }
-    // &.purple{
-    //   background: linear-gradient(to bottom, #7f4385, black);
-    // }
-    // &.yellow{
-    //   background: linear-gradient(to bottom, #c6d638, black);
-    // }
   }
 }
