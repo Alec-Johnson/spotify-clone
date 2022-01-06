@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+// 
 import { useRecoilState } from "recoil"
 import { currentTrackIdState, isPlayingState } from "src/atoms/songAtom"
 import useSpotify from "src/hooks/useSpotify"
@@ -14,7 +16,6 @@ function Song({ track, order }: SongProps) {
   const [currentTrackId, setCurrentTrackId] = useRecoilState(currentTrackIdState)
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState)
   
-  
   const playSong = () => {
     setCurrentTrackId(track?.track?.id)
     setIsPlaying(true)
@@ -24,10 +25,14 @@ function Song({ track, order }: SongProps) {
   };
 
   return (
+    
     <div className={styles.container} onClick={playSong}>
       <div className={styles.songInfo}>
         <p>{order + 1}</p>
-        <img src={track?.track?.album?.images[0]?.url} alt={track.track.name} className={styles.trackImg} />
+        <img src={track?.track?.album?.images[0]?.url || '../../placeholder-music.png'} 
+          alt={track.track.name} 
+          className={styles.trackImg} 
+        />
         <div>
           <p className={styles.trackName}>{track.track.name}</p>
           <p>{track.track.artists[0].name}</p>

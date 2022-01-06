@@ -54,7 +54,7 @@
     margin-left: auto;
 
     @media screen and (min-width: 768px) {
-      margin-left: 1rem; // Allows albumInfo and songInfo text to never overlap
+      margin-left: 1rem; // Allows albumInfo and songInfo text to never overlap on resize
     }
     .albumName {
       display: none;
