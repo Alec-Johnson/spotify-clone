@@ -1,0 +1,47 @@
+@use '../../styles/_mixins.scss' as *;
+.container {
+  display: flex;
+  align-items: center;
+  @include space-x(1rem);
+  overflow-x: scroll;
+  padding-left: 1rem;
+  background: #4e59bb;
+  height: 8rem;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  position: relative;
+  margin-top: .5rem;
+  @include hide-scrollbar;
+
+  @media screen and (min-width: 768px) {
+  }
+
+
+  h2 {
+    position: absolute;
+    top: -.5rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    color: #fff;
+
+  }
+  .artist {
+    margin-top: 1rem;
+    .artistName {
+      font-size: 1rem;
+      line-height: 1rem;
+      font-weight: 500;
+      color: #fafafa;
+      width: 6rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    img {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+    }
+  }
+}
