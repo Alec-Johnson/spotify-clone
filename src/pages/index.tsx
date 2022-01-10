@@ -3,11 +3,11 @@ import Playlist from '@components/Playlist/Playlist'
 import Player from '@components/Player/Player'
 import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
-import styles from '../styles/Home.module.scss'
+import styles from '../styles/pages/Home.module.scss'
 import { getSession } from 'next-auth/react'
 import { currentViewState } from '../atoms/viewAtom'
 import { useRecoilValue } from 'recoil'
-import Search from '@components/Search/Search'
+import Feed from '@components/Feed/Feed'
 
 const Home: NextPage = () => {
   const currentComponent = useRecoilValue(currentViewState)
@@ -22,8 +22,8 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <Sidebar />
+        {currentComponent == 'home' && <Feed />}
         {currentComponent == 'playlist' && <Playlist />}
-        {currentComponent == 'search' && <Search />}
       </main>
 
       <div className={styles.playerWrapper}>
