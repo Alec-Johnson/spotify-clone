@@ -9,17 +9,18 @@ import {
 import { signOut, useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
-import { playlistIDState } from 'src/atoms/playlistAtom'
+import { playlistIDState } from '../../atoms/playlistAtom'
+import { currentViewState } from '../../atoms/viewAtom'
 import useSpotify from '../../hooks/useSpotify'
 
 import styles from './Sidebar.module.scss'
 
 function Sidebar() {
   const spotifyApi = useSpotify()
-  const { data, status } = useSession()
   const [playlists, setPlaylists] = useState<SpotifyApi.PlaylistObjectSimplified[] | null>([])
   // Set selected playlistId globally so that it can be used in other components
   const [playlistId, setPlaylistId] = useRecoilState(playlistIDState)
+  const [view, setView] = useRecoilState(currentViewState)
 
   useEffect(() => {
     if (spotifyApi.getAccessToken()) {
@@ -27,20 +28,16 @@ function Sidebar() {
         setPlaylists(playlists.body.items)
       })
     }
-  }, [data, spotifyApi])
+  }, [spotifyApi])
   
   return (
     <div className={styles.container}>
       <div className={styles.btnGroup}>
-      <button onClick={() => signOut()}>
-          <HomeIcon />
-          <p>Logout</p>
-        </button>
-        <button>
+        <button onClick={() => setView('home')}>
           <HomeIcon />
           <p>Home</p>
         </button>
-        <button>
+        <button onClick={() => setView('search')}>
           <SearchIcon />
           <p>Search</p>
         </button>
@@ -61,9 +58,12 @@ function Sidebar() {
         
         <hr />
 
-        {/* Playlists... */}
-        {playlists?.map((playlist) => (
-          <p onClick={() => setPlaylistId(playlist.id)} className={styles.playlistName} key={playlist.id}>
+        {/* User playlists... */}
+        {playlists && playlists.map((playlist: SpotifyApi.PlaylistBaseObject) => (
+          <p onClick={() => {
+            setPlaylistId(playlist.id)
+            setView('playlist')}} 
+            className={styles.playlistName} key={playlist.id}>
             {playlist.name}
           </p>
         ))}

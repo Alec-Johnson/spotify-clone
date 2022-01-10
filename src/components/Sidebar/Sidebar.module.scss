@@ -1,15 +1,14 @@
 .container {
   color: gray;
-  background-color: #121212;
-  padding: 8px;
+  background-color: black;
+  padding-top: 16px;
   font-size: 14px;
   line-height: 1.25rem;
   border-right: #292929 solid 1px;
   overflow-y: scroll;
-  height: 100vh;
-  width: 13rem;
+  height: calc(100vh - 6.25rem); // 6rem = height of player + padding
+  min-width: 13rem;
   display: none;
-  padding-top: 32px;
   // Hide scrollbar
   -ms-overflow-style: none;
   /* Firefox */
@@ -27,13 +26,14 @@
   @media (min-width: 1280px) {
     font-size: 16px;
     line-height: 1.75rem;
-    width: 15rem;
+    min-width: 15rem;
   }
 
   .btnGroup {
-    padding-left: 16px;
-    padding-right: 16px;
+    margin-left: 1rem;
+    padding-right: 1rem;
     width: 100%;
+    padding-bottom: 132px;
     
     hr {
       border: 0.1px #292929 solid;
@@ -47,6 +47,8 @@
       font-weight: 500;
       height: 40px;
       width: 100%;
+      padding-left: .75rem;
+      margin-left: 0;
 
       &:hover {
         color: white;
@@ -66,6 +68,8 @@
   .playlistName {
     cursor: pointer;
     height: 25px;
+    margin-top: 1rem;
+    margin-left: 1rem;
 
     &:hover {
       color: white;
