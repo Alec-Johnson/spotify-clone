@@ -1,8 +1,9 @@
 .container {
+  position: relative;
   width: 100%;
   overflow: hidden;
   background-color: #121212;
-  padding-top: 1rem;
+  padding: 1rem;
   flex-wrap: wrap;
   flex-grow: 1;
   height: 100vh;

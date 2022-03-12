@@ -7,8 +7,8 @@ import { useEffect} from 'react'
 
 import styles from './Playlist.module.scss'
 import { useRecoilState, useRecoilValue } from 'recoil'
-import { playlistIDState, playlistState } from '../../atoms/playlistAtom'
-import useSpotify from '../../hooks/useSpotify'
+import { playlistIDState, playlistState } from '@atoms/playlistAtom'
+import useSpotify from '@hooks/useSpotify'
 import Songs from '@components/Songs/Songs'
 
 function Playlist() {

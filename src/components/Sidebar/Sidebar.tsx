@@ -3,24 +3,21 @@ import {
   SearchIcon,
   LibraryIcon,
   PlusCircleIcon,
-  RssIcon,
   HeartIcon
 } from '@heroicons/react/outline'
-import { signOut, useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
-import { playlistIDState } from '../../atoms/playlistAtom'
-import { currentViewState } from '../../atoms/viewAtom'
-import useSpotify from '../../hooks/useSpotify'
+import { playlistIDState } from '@atoms/playlistAtom'
+import useSpotify from '@hooks/useSpotify'
 
 import styles from './Sidebar.module.scss'
+import Link from 'next/link'
 
 function Sidebar() {
   const spotifyApi = useSpotify()
   const [playlists, setPlaylists] = useState<SpotifyApi.PlaylistObjectSimplified[] | null>([])
   // Set selected playlistId globally so that it can be used in other components
   const [playlistId, setPlaylistId] = useRecoilState(playlistIDState)
-  const [view, setView] = useRecoilState(currentViewState)
 
   useEffect(() => {
     if (spotifyApi.getAccessToken()) {
@@ -33,11 +30,13 @@ function Sidebar() {
   return (
     <div className={styles.container}>
       <div className={styles.btnGroup}>
-        <button onClick={() => setView('home')}>
-          <HomeIcon />
-          <p>Home</p>
-        </button>
-        <button onClick={() => setView('search')}>
+        <Link href='/feed' passHref>
+          <button>
+            <HomeIcon />
+            <p>Home</p>
+          </button>
+        </Link>
+        <button>
           <SearchIcon />
           <p>Search</p>
         </button>
@@ -62,9 +61,11 @@ function Sidebar() {
         {playlists && playlists.map((playlist: SpotifyApi.PlaylistBaseObject) => (
           <p onClick={() => {
             setPlaylistId(playlist.id)
-            setView('playlist')}} 
-            className={styles.playlistName} key={playlist.id}>
-            {playlist.name}
+          }}
+          className={styles.playlistName} key={playlist.id}>
+            <Link href='/'>
+              {playlist.name}
+            </Link> 
           </p>
         ))}
         

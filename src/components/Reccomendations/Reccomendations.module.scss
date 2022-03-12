@@ -1,22 +1,30 @@
-@use '../../styles/mixins.scss' as *;
+@use '@styles/mixins.scss' as *;
 
 .container {
   display: flex;
   flex-direction: column;
   align-content: center;
   overflow-y: scroll;
-  padding: 0 1rem;
+  padding: 1rem;
   background: #4e59bb;
   width: 22rem;
-  height: 100%;
+  height: 25rem;
   border-radius: 2rem;
   margin-top: .5rem;
   @include hide-scrollbar;
   color: whitesmoke;
   @include space-y(1rem);
-
+  position: relative;
   @media screen and (min-width: 768px) {
     // add scrollbar for desktop
+  }
+  h2 {
+    position: absolute;
+    top: 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 2rem;
+    color: #fff;
   }
   
   .track {
@@ -25,27 +33,16 @@
     display: flex;
     align-items: center;
     @include space-x(1rem);
-    h2 {
-      font-size: 1.25rem;
-      font-weight: 500;
-      line-height: 1.5rem;
-      color: #fff;
-    }
 
     img {
       height: 10rem;
       width: 10rem;
     }
-    .artistWrapper{
+    .artistWrapper {
       display: flex;
       flex-direction: column;
       .trackName {
         flex: 1;
-      }
-      hr {
-        width: 100%;
-        height: 1px;
-        background-color: #fafafa;
       }
       .trackArtist {
         flex: 1;

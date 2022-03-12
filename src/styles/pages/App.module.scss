@@ -1,0 +1,14 @@
+.wrapper {
+  display: inline-flex;
+  background-color: black;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+
+  .playerWrapper {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+  }
+}

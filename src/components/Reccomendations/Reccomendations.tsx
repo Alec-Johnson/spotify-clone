@@ -1,5 +1,5 @@
 import { useRecoilValue } from 'recoil';
-import { reccomendationsState } from 'src/atoms/feedAtom';
+import { reccomendationsState } from '@atoms/feedAtom';
 import styles from './Reccomendations.module.scss'
 
 function Reccomendations() {
@@ -13,8 +13,8 @@ function Reccomendations() {
           <img src={track.album.images[1].url} alt={track.album.name} />
           <div className={styles.artistWrapper}>
             <div className={styles.trackName}>{track.name}</div>
-            <hr />
-            <div className={styles.trackArtist}>{track.artists[0].name}</div></div>
+            <div className={styles.trackArtist}>{track.artists[0].name}</div>
+          </div>
         </div>
       ))}
     </div>

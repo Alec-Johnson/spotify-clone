@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 
 // Current track ID selected
-export const currentTrackIdState = atom<any>({
+export const currentTrackIdState = atom<any | SpotifyApi.TrackObjectFull>({
 	key: "currentTrackIdState",
 	default: null,
 });

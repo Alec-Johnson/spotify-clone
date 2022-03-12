@@ -2,7 +2,7 @@ import { GetServerSideProps } from 'next';
 import { getProviders, signIn} from 'next-auth/react'
 import Image from 'next/image';
 import SpotifyLogo from 'public/spotify-logo.png';
-import styles from '../styles/pages/Login.module.scss';
+import styles from '@styles/pages/Login.module.scss';
 
 type SpotifyProviderProps = {
   providers: {

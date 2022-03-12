@@ -7,9 +7,9 @@ import { useCallback, useEffect, useState } from 'react'
 import { debounce } from 'lodash'
 import { useRecoilState } from 'recoil'
 
-import { currentTrackIdState, isPlayingState } from '../../atoms/songAtom'
-import useSongInfo from '../../hooks/useSongInfo'
-import useSpotify from '../../hooks/useSpotify'
+import { currentTrackIdState, isPlayingState } from '@atoms/songAtom'
+import useSongInfo from '@hooks/useSongInfo'
+import useSpotify from '@hooks/useSpotify'
 
 import styles from './Player.module.scss'
 

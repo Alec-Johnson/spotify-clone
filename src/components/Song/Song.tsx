@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 // 
 import { useRecoilState } from "recoil"
-import { currentTrackIdState, isPlayingState } from "src/atoms/songAtom"
+import { currentTrackIdState, isPlayingState } from "@atoms/songAtom"
 import useSpotify from "src/hooks/useSpotify"
-import { msToMinutesAndSeconds } from "src/lib/time"
+import { msToMinutesAndSeconds } from "@lib/time"
 import styles from './Song.module.scss'
 
 type SongProps = {

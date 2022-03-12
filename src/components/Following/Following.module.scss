@@ -1,47 +1,67 @@
 @use '../../styles/_mixins.scss' as *;
+
 .container {
   display: flex;
   align-items: center;
-  @include space-x(1rem);
   overflow-x: scroll;
-  padding-left: 1rem;
-  background: #4e59bb;
-  height: 8rem;
-  border-top-left-radius: 2rem;
-  border-bottom-left-radius: 2rem;
-  position: relative;
-  margin-top: .5rem;
+  overflow-y: hidden;
+  height: 18rem;
   @include hide-scrollbar;
 
   @media screen and (min-width: 768px) {
   }
 
-
-  h2 {
+  .header {
     position: absolute;
-    top: -.5rem;
-    font-size: 1.25rem;
-    font-weight: 500;
-    line-height: 1.5rem;
-    color: #fff;
-
+    top: .5rem;
+    h2 {
+      font-size: 2rem;
+      font-weight: 500;
+      line-height: 2rem;
+      color: #fff;
+    }
   }
   .artist {
-    margin-top: 1rem;
+    margin: 1rem .25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(46, 46, 46, 0.7);
+    border-radius: 15%;
+    padding: 1rem;
+    
+    // &:hover .artistName {
+    //   display: flex;
+    // }
+
     .artistName {
       font-size: 1rem;
       line-height: 1rem;
       font-weight: 500;
       color: #fafafa;
-      width: 6rem;
+      max-width: 10rem;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      padding-top: 1.25rem;
+      margin-left: .25rem;
     }
+    .artistType {
+      font-size: .75rem;
+      line-height: 1rem;
+      font-weight: 600;
+      color: #a7a7a7;
+      max-width: 10rem;
+      white-space: nowrap;
+      margin-left: .25rem;
+      padding-top: .25rem;
+      text-transform: capitalize;
+    }
+    
     img {
-      width: 3rem;
-      height: 3rem;
-      border-radius: 50%;
+      width: 9rem;
+      height: 9rem;
+      border-radius: 1rem;
     }
   }
 }
