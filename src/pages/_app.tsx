@@ -11,11 +11,11 @@ function MyApp({ Component, pageProps: { session, ...pageProps} }: AppProps) {
     <SessionProvider session={session}>
       <RecoilRoot>
         <div className={styles.wrapper}>
-          <Sidebar />
+          {session && <Sidebar />}
           <Component {...pageProps} />
-          <div className={styles.playerWrapper}>
+          {session && <div className={styles.playerWrapper}>
             <Player />
-          </div>
+          </div>}
         </div>
       </RecoilRoot>
     </SessionProvider>
