@@ -5,7 +5,13 @@ import { NextRequest, NextResponse } from "next/server";
 // More info about this file: https://nextjs.org/docs/middleware
 export async function middleware(req: NextRequest & NextApiRequest) {
 	// Token will exist on the session if the user is logged in
-	const token = await getToken({ req, secret: process.env.JWT_SECRET! });
+	const token = await getToken({
+		req,
+		secret: process.env.JWT_SECRET as string,
+		secureCookie:
+			process.env.NEXTAUTH_URL?.startsWith("https://") ??
+			!!process.env.VERCEL_URL,
+	});
 
 	const { pathname } = req.nextUrl;
 

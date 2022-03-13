@@ -12,9 +12,11 @@ import useSpotify from '@hooks/useSpotify'
 
 import styles from './Sidebar.module.scss'
 import Link from 'next/link'
+import { useSession } from 'next-auth/react'
 
 function Sidebar() {
   const spotifyApi = useSpotify()
+  const { data: session } = useSession()
   const [playlists, setPlaylists] = useState<SpotifyApi.PlaylistObjectSimplified[] | null>([])
   // Set selected playlistId globally so that it can be used in other components
   const [playlistId, setPlaylistId] = useRecoilState(playlistIDState)
@@ -25,7 +27,7 @@ function Sidebar() {
         setPlaylists(playlists.body.items)
       })
     }
-  }, [spotifyApi])
+  }, [spotifyApi, session])
   
   return (
     <div className={styles.container}>

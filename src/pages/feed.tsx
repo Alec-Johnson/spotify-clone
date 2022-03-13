@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Following from "@components/Following/Following";
 import Reccomendations from "@components/Reccomendations/Reccomendations";
 import RecentlyPlayed from "@components/RecentlyPlayed/RecentlyPlayed";
@@ -11,7 +12,7 @@ import styles from '@styles/pages/Feed.module.scss'
 import { getSession } from "next-auth/react";
 import { GetServerSideProps } from "next";
 
-function Feed() {
+function Feed({ session }: any) {
   const [following, setFollowing] = useRecoilState(followingState);
   const [reccomendations, setReccomendations] = useRecoilState(reccomendationsState);
   const [recentlyPlayed, setRecentlyPlayed] = useRecoilState(recentlyPlayedState);
@@ -36,7 +37,7 @@ function Feed() {
       }  
     }
     fetchFeed()
-  }, [])
+  }, [session])
   
   return (
     <div className={styles.container}>
